@@ -9,7 +9,6 @@ const path=require('path');
 const app = require('../app');
 const register = require('../backend/model/register');
 
-var s=path.join(__dirname,"/../public/index2.html");
 
 
 
