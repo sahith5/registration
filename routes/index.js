@@ -1,4 +1,3 @@
-const { ENGINE_METHOD_PKEY_ASN1_METHS } = require('constants');
 var express = require('express');
 var router = express.Router();
 var loginlib=require('../backend/libs/loginlib');
@@ -9,7 +8,6 @@ const todolib=require('../backend/libs/todolib');
 const path=require('path');
 const app = require('../app');
 const register = require('../backend/model/register');
-const { fileURLToPath } = require('url');
 
 var s=path.join(__dirname,"/../public/index2.html");
 
@@ -20,9 +18,6 @@ var s=path.join(__dirname,"/../public/index2.html");
 
 
 router.get('/', function(req, res) {
-
-  
-
 
 });
 

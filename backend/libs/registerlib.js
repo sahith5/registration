@@ -1,4 +1,3 @@
-const { find } = require('../model/register');
 var model=require('../model/register');
 
 module.exports={

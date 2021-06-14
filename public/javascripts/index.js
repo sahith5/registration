@@ -193,7 +193,7 @@ $('#addtodo').on('click',function()
     $.ajax(
         {
             type:"post",
-            url:"https://regiistration.herokuapp.com/addtodo",
+            url:"http://localhost:3000add/todo",
             data:{user:userObject.getCurrentUserName(),tasks:tasks},
             success:function(success)
             {
@@ -214,6 +214,7 @@ function onSignIn(googleUser) {
     // console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
     var username=profile.getName();
     var email=profile.getEmail();
+    console.log("call came");
     $.ajax({
         type:"post",
         data:{username:username,role:'user',email:email},
