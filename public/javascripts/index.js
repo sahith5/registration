@@ -81,7 +81,7 @@ $("#loginb").on("click",function()
     $.ajax({
         type:"post",
         data:obj,
-        url:"http://localhost:3000/login",
+        url:"https://regiistration.herokuapp.com/login",
         success:function(data)
         {
             if(data)
@@ -141,7 +141,7 @@ $('#register').on('click',function()
 
      type:"post",
 
-     url:"http://localhost:3000/register",
+     url:"https://regiistration.herokuapp.com/register",
 
      data:r,
 
@@ -188,7 +188,7 @@ $('#addtodo').on('click',function()
     $.ajax(
         {
             type:"post",
-            url:"http://localhost:3000/addtodo",
+            url:"https://regiistration.herokuapp.com/addtodo",
             data:{user:userObject.getCurrentUserName(),tasks:tasks},
             success:function(success)
             {
