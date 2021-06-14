@@ -48,7 +48,7 @@ var signedin=function(x) {
         console.log("signed in 11 ")
         $("#not-signedin").hide();
         $("#signedin").show();
-        $("#welcomeUser").html("welcome  "+userObject.getCurrentUserName());
+        $("#welcomeUser").html("welcome"+"  "+userObject.getCurrentUserName());
 
     }
     else
@@ -86,7 +86,7 @@ $("#loginb").on("click",function()
         {
             if(data)
             {
-            console.log(data);
+                console.log(data);
               userObject.saveUserInLocalStorage(data)
               signedin(true);
 
@@ -110,6 +110,10 @@ $('#logout').on('click',function()
 {
     userObject.removeCurrentUser()
     signedin(false);
+    gapi.auth2.getAuthInstance().signOut().then(function() {
+        console.log('user signed out')
+      })
+    
 })
 
 
@@ -157,6 +161,7 @@ $('#register').on('click',function()
         }
         else
         {
+            toastr.info("error");
             console.log(data.error)
             toastr.info(data.error);
         }
@@ -198,6 +203,42 @@ $('#addtodo').on('click',function()
     )
 })
 
+
+
+
+function onSignIn(googleUser) {
+    var profile = googleUser.getBasicProfile();
+    // console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+    // console.log('Name: ' + profile.getName());
+    // console.log('Image URL: ' + profile.getImageUrl());
+    // console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+    var username=profile.getName();
+    var email=profile.getEmail();
+    $.ajax({
+        type:"post",
+        data:{username:username,role:'user',email:email},
+        url:"https://regiistration.herokuapp.com/google/login",
+        success:function(data)
+        {
+
+            if(data.success)
+            {
+                toastr.info("user signed in");
+                userObject.saveUserInLocalStorage({user:data.user,userid:data.userid});
+                console.log(data);
+                signedin(true);
+
+            }
+            else
+            {
+                console.log(data.error);
+            }
+
+
+        }
+    })
+
+}
 
 
 

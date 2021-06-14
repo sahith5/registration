@@ -58,6 +58,45 @@ router.post('/register',function(req,res)
 })
 
 
+////
+
+
+
+router.post('/google/login',function(req,res)
+{
+    console.log("call landed");
+
+    registerlib.ispresernt({email:req.body.email},function(response)
+    {
+        if(response.success)
+        {
+            req.session.user={user:response.user,userid:response.userid};
+            res.json({success:true,user:response.user,userid:response._id})
+        }
+        else
+        {
+            registerlib.register(req.body,function(response)
+            {
+            if(response.success)
+            {
+                req.session.user={user:response.user,userid:response.userid};
+        
+                res.json({success:true,user:response.user,userid:response._id})
+            }
+            else
+            {
+                res.json({success:false,error:response.error});
+        
+            }
+            })
+        }
+
+    })
+})
+
+
+
+
 
 
 router.post("/login",function(req,res)

@@ -1,3 +1,4 @@
+const { find } = require('../model/register');
 var model=require('../model/register');
 
 module.exports={
@@ -14,7 +15,6 @@ module.exports={
             return cb(response);
            }
            else{
-               
             response.success=true;
             response.user=data.username;
             response.userid=data._id;
@@ -23,8 +23,35 @@ module.exports={
            }   
         }
         )
+    },   
+    ispresernt:function(data,cb)
+    {
+
+        var response={error:"error",success:true,user:"user",userid:"userid"};
+
+        model.find({email:data.email},function(err,data)
+        {
+
+            if(err)
+            {
+                return cb(false);
+            }
 
 
-
+            if(data)
+            { 
+                
+                console.log(data);
+                response.success=true;
+                response.user=data[0].username;
+                response.userid=data[0]._id;
+                console.log(response);
+                return cb(response);
+            }
+            else{
+                response.success=flase;
+                return cb(response);
+            }
+        })
     }
 }
