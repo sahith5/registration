@@ -81,7 +81,7 @@ $("#loginb").on("click",function()
     $.ajax({
         type:"post",
         data:obj,
-        url:"https://regiistration.herokuapp.com/login",
+        url:"http://localhost:3000/login",
         success:function(data)
         {
             if(data)
@@ -145,7 +145,7 @@ $('#register').on('click',function()
 
      type:"post",
 
-     url:"https://regiistration.herokuapp.com/register",
+     url:"http://localhost:3000/register",
 
      data:r,
 
@@ -193,7 +193,7 @@ $('#addtodo').on('click',function()
     $.ajax(
         {
             type:"post",
-            url:"http://localhost:3000add/todo",
+            url:"http://localhost:3000/addtodo",
             data:{user:userObject.getCurrentUserName(),tasks:tasks},
             success:function(success)
             {
@@ -218,14 +218,14 @@ function onSignIn(googleUser) {
     $.ajax({
         type:"post",
         data:{username:username,role:'user',email:email},
-        url:"https://regiistration.herokuapp.com/google/login",
+        url:"http://localhost:3000/google/login",
         success:function(data)
         {
 
-            if(data.success)
+            if(data)
             {
                 toastr.info("user signed in");
-                userObject.saveUserInLocalStorage({user:data.user,userid:data.userid});
+                userObject.saveUserInLocalStorage({user:username});
                 console.log(data);
                 signedin(true);
 
