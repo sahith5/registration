@@ -81,7 +81,7 @@ $("#loginb").on("click",function()
     $.ajax({
         type:"post",
         data:obj,
-        url:"http://localhost:3000/login",
+        url:"https://regiistration.herokuapp.com/login",
         success:function(data)
         {
             if(data)
@@ -145,7 +145,7 @@ $('#register').on('click',function()
 
      type:"post",
 
-     url:"http://localhost:3000/register",
+     url:"https://regiistration.herokuapp.com/register",
 
      data:r,
 
@@ -193,7 +193,7 @@ $('#addtodo').on('click',function()
     $.ajax(
         {
             type:"post",
-            url:"http://localhost:3000/addtodo",
+            url:"https://regiistration.herokuapp.com/addtodo",
             data:{user:userObject.getCurrentUserName(),tasks:tasks},
             success:function(success)
             {
@@ -218,7 +218,7 @@ function onSignIn(googleUser) {
     $.ajax({
         type:"post",
         data:{username:username,role:'user',email:email},
-        url:"http://localhost:3000/google/login",
+        url:"https://regiistration.herokuapp.com/google/login",
         success:function(data)
         {
 
