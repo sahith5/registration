@@ -64,37 +64,37 @@ router.post('/google/login',function(req,res)
 //username:username,role:'user',email:email
     
 
-req.session.user={user:req.username};
+// req.session.user={user:req.username};
 
-res.send(true);
+// res.send(true);
 
 
-    // registerlib.ispresernt({email:req.body.email},function(response)
-    // {
-    //     if(response.success)
-    //     {
-    //         req.session.user={user:response.user,userid:response.userid};
-    //         res.json({success:true,user:response.user,userid:response._id})
-    //     }
-    //     else
-    //     {
-    //         registerlib.register(req.body,function(response)
-    //         {
-    //         if(response.success)
-    //         {
-    //             req.session.user={user:response.user,userid:response.userid};
+    registerlib.ispresernt({email:req.body.email},function(response)
+    {
+        if(response.success)
+        {
+            req.session.user={user:response.user,userid:response.userid};
+            res.json({success:true,user:response.user,userid:response._id})
+        }
+        else
+        {
+            registerlib.register(req.body,function(response)
+            {
+            if(response.success)
+            {
+                req.session.user={user:response.user,userid:response.userid};
         
-    //             res.json({success:true,user:response.user,userid:response._id})
-    //         }
-    //         else
-    //         {
-    //             res.json({success:false,error:response.error});
+                res.json({success:true,user:response.user,userid:response._id})
+            }
+            else
+            {
+                res.json({success:false,error:response.error});
         
-    //         }
-    //         })
-    //     }
+            }
+            })
+        }
 
-    // })
+    })
 })
 
 

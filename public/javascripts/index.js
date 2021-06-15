@@ -221,8 +221,8 @@ function onSignIn(googleUser) {
         url:"https://regiistration.herokuapp.com/google/login",
         success:function(data)
         {
-
-            if(data)
+  console.log(data);
+            if(data.success)
             {
                 toastr.info("user signed in");
                 userObject.saveUserInLocalStorage({user:username});

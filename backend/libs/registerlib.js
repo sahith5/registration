@@ -37,7 +37,7 @@ module.exports={
             }
 
 
-            if(data)
+            if(data.length==1)
             { 
                 
                 console.log(data);
@@ -48,7 +48,7 @@ module.exports={
                 return cb(response);
             }
             else{
-                response.success=flase;
+                response.success=false;
                 return cb(response);
             }
         })
