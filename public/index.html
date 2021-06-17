@@ -15,11 +15,7 @@
 
 </head>
 <body>
-
-
-
-
-    <header>
+  <header>
         
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
@@ -67,6 +63,12 @@
         <div id="not-signedin">
                   <input class=" me-sm-2 " id="username" type="text" placeholder="username">
                   <input class=" me-sm-2" id="password" type="password" placeholder="password">
+
+                  <select name="role" id="role" aria-placeholder="select your role">
+                    <option value="null">select your role</option> 
+                    <option value="custumer">custumer</option>
+                    <option value="owner">owner</option>
+                  </select>&nbsp;
                   <button id="loginb"  class="btn btn-secondary ">submit</button>&nbsp;&nbsp;
                   <button  class="g-signin2" data-onsuccess="onSignIn"></button>
                   <button id="reg" class="btn btn-secondary my-2 my-sm-0">register</button>

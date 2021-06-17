@@ -73,33 +73,67 @@ else{
 
 
 $("#loginb").on("click",function()
-{
+{    
+    var role=$("#role").val();
     var username=$("#username").val();
     var password=$("#password").val();
-    var obj={username:username,password:password}
+    if(role=="custumer")
+    {
+            var obj={username:username,password:password}
 
-    $.ajax({
-        type:"post",
-        data:obj,
-        url:"https://regiistration.herokuapp.com/login",
-        success:function(data)
-        {
-            if(data)
+
+            $.ajax({
+                type:"post",
+                data:obj,
+                url:"http://localhost:3000/login",
+                success:function(data)
+                {
+                    if(data)
+                    {
+                        console.log(data);
+                    userObject.saveUserInLocalStorage(data)
+                    signedin(true);
+
+                    }
+                    else
+                    {
+                        toastr.info("invalid password or username")
+                        console.log(false);
+                        signedin(false);
+                    }
+
+                }
+            })
+    }
+    else
+    {
+        var obj={name:username,password:password}
+        
+        $.ajax({
+            type:"post",
+            data:obj,
+            url:"http://localhost:3000/owner/login",
+            success:function(data)
             {
-                console.log(data);
-              userObject.saveUserInLocalStorage(data)
-              signedin(true);
+                if(data)
+                {
+                    console.log(data);
+                userObject.saveUserInLocalStorage(data)
+                signedin(true);
+
+                }
+                else
+                {
+                    toastr.info("invalid password or username")
+                    console.log(false);
+                    signedin(false);
+                }
 
             }
-            else
-            {
-                toastr.info("invalid password or username")
-                console.log(false);
-                signedin(false);
-            }
+        })
 
-        }
-    })
+    }
+
 }
 )
 
@@ -125,6 +159,13 @@ $('#reg').on('click',function()
 })
 
 
+$("#registerowner").on('click',function()
+{
+    location.href="../kiranaregister.html"
+})
+
+//////////////////////////////////////////////////////////////////////////////////////
+
 $('#register').on('click',function()
 {
 
@@ -145,7 +186,7 @@ $('#register').on('click',function()
 
      type:"post",
 
-     url:"https://regiistration.herokuapp.com/register",
+     url:"http://localhost:3000/register",
 
      data:r,
 
@@ -165,19 +206,66 @@ $('#register').on('click',function()
             console.log(data.error)
             toastr.info(data.error);
         }
-
-
     }
-
-
-
     })
-
-
-
-
 })
 
+////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+$('#registershop').on('click',function()
+{
+
+// /email:String,
+// name:String,
+// shopname:String,
+// password:String,
+
+    var name=$("#username").val()
+    var email=$("#emailid").val()    
+    var password=$("#password").val()
+    var shopname=$("#shopname").val()
+
+var r={email:email,name:name,password:password,shopname:shopname};
+
+    $.ajax({
+
+     type:"post",
+
+     url:"http://localhost:3000/kirana/register",
+
+     data:r,
+
+     success:function(data)
+     {
+
+        if(data.success)
+        {
+            console.log(data);
+            signedin(true);
+            userObject.saveUserInLocalStorage(data)
+            location.href="../index.html"
+        }
+        else
+        {
+            toastr.info("error");
+            console.log(data.error)
+            toastr.info(data.error);
+        }
+    }
+    })
+})
+
+
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////
 $("#todo").on('click',function()
 {
 if(userObject.isUserLoggedIn())
@@ -193,7 +281,7 @@ $('#addtodo').on('click',function()
     $.ajax(
         {
             type:"post",
-            url:"https://regiistration.herokuapp.com/addtodo",
+            url:"http://localhost:3000/addtodo",
             data:{user:userObject.getCurrentUserName(),tasks:tasks},
             success:function(success)
             {
@@ -205,7 +293,7 @@ $('#addtodo').on('click',function()
 
 
 
-
+/////////////////////////////////////////////////////////////////////////////////
 function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile();
     // console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
@@ -218,14 +306,14 @@ function onSignIn(googleUser) {
     $.ajax({
         type:"post",
         data:{username:username,role:'user',email:email},
-        url:"https://regiistration.herokuapp.com/google/login",
+        url:"http://localhost:3000/google/login",
         success:function(data)
         {
   console.log(data);
             if(data.success)
             {
                 toastr.info("user signed in");
-                userObject.saveUserInLocalStorage({user:username});
+                userObject.saveUserInLocalStorage({user:username,role:"customer"});
                 console.log(data);
                 signedin(true);
 

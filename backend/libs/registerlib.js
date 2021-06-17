@@ -1,5 +1,7 @@
 var model=require('../model/register');
 
+
+
 module.exports={
     register:function(data,cb)
     {
@@ -14,6 +16,7 @@ module.exports={
             return cb(response);
            }
            else{
+            console.log(data);
             response.success=true;
             response.user=data.username;
             response.userid=data._id;

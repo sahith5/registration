@@ -1,5 +1,5 @@
-const mongoose=require('mongoose')
-const userModel=require('../model/register');
+
+const userModel=require('../model/register.js');
 module.exports.createUsers = function(){
     
     userModel.find({}, function(err, collection){

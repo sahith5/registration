@@ -5,16 +5,17 @@ var logger = require('morgan');
 var session=require('express-session');
 var config=require('./backend/congig/config');
 var MongoStore = require('connect-mongo');
-
-
 const mongoose=require('mongoose');
 const dbconnect=require('./backend/libs/dbconnect')
-const userscreating=require('./backend/libs/bootstrapinglib');
-const todolib=require('./backend/libs/todolib');
-
-
-
 dbconnect.connect;
+
+
+
+const userscreating=require('./backend/libs/bootstrapinglib');
+const kiranaregister=require('./backend/libs/kiranaregisterlib');
+const oliginlib=require('./backend/libs/ologinlib');
+
+
 
 userscreating.createUsers()
 
