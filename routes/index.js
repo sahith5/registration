@@ -1,14 +1,14 @@
 var express = require('express');
 var router = express.Router();
-var loginlib=require('../backend/libs/cloginlib');
+var cloginlib=require('../backend/libs/cloginlib');
 const session=require('express-session');
 var registerlib=require('../backend/libs/registerlib')
 const path=require('path');
 const app = require('../app');
 const register = require('../backend/model/register');
 const kiranaregisterlib=require('../backend/libs/kiranaregisterlib');
-const oliginlib=require('../backend/libs/ologinlib');
-
+const ologinlib=require('../backend/libs/ologinlib');
+const ownerlibs=require('../backend/libs/ownerlibs');
 /* GET home page. */
 
 
@@ -37,7 +37,7 @@ router.post('/kirana/register',function(req,res)
     {
     if(response.success)
     {
-        req.session.user={user:response.user,userid:response.userid};
+        req.session.user={user:response.user,userid:response.userid,role:'owner'};
 
         res.json({success:true,user:response.user,userid:response._id,role:"owner"});
     }
@@ -64,7 +64,7 @@ router.post('/register',function(req,res)
     {
     if(response.success)
     {
-        req.session.user={user:response.user,userid:response.userid};
+        req.session.user={user:response.user,userid:response.userid,role:'customer'};
 
         res.json({success:true,user:response.user,userid:response._id,role:'customer'});
     }
@@ -109,7 +109,7 @@ router.post('/google/login',function(req,res)
             {
             if(response.success)
             {
-                req.session.user={user:response.user,userid:response.userid};
+                req.session.user={user:response.user,userid:response.userid,role:"customer"};
         
                 res.json({success:true,user:response.user,userid:response._id,role:"customer"});
             }
@@ -134,13 +134,13 @@ router.post("/login",function(req,res)
 
 console.log("call landed");
 
- ologinlib.isvalid(req.body,function(response)
+cloginlib.isvalid(req.body,function(response)
  {
      if(response.success)
      {
-        req.session.user={user:response.user,userid:response.userid};
+        req.session.user={user:response.user,userid:response.userid,role:'customer'};
         console.log(req.session.user);
-         res.json({user:response.user,userid:response.userid})
+         res.json({user:response.user,userid:response.userid,role:'customer'})
      }
      else
      {
@@ -157,16 +157,16 @@ console.log("call landed");
 /////////////////////////////////////////////////
 router.post("/owner/login",function(req,res)
 {
-
+console.log('owner login');
 console.log("call landed");
 
- loginlib.isvalid(req.body,function(response)
+ ologinlib.isvalid(req.body,function(response)
  {
      if(response.success)
      {
-        req.session.user={user:response.user,userid:response.userid};
+        req.session.user={user:response.user,userid:response.userid,role:'owner'};
         console.log(req.session.user);
-         res.json({user:response.user,userid:response.userid})
+         res.json({user:response.user,userid:response.userid,role:"owner"});
          
      }
      else
@@ -178,6 +178,38 @@ console.log("call landed");
 })
 
 })
+
+
+
+
+
+
+router.post("/addproduct",function(req,res)
+{
+    console.log('addproduct landed');
+    console.log(req.body);
+   ownerlibs.addproduct(req.body,function(data)
+   {
+       console.log(data);
+   })
+})
+
+
+
+router.get('/owner/myproducts:user',function(req,res)
+{
+    console.log("from index.js my products"+req.params.user);
+    ownerlibs.getproducts({name:req.params.user},function(datax)
+    {
+        console.log(datax);
+    })
+
+    
+  res.send("   ")
+
+
+})
+
 
 
 

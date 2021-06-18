@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css" integrity="sha512-Ez0cGzNzHR1tYAv56860NLspgUGuQw16GiOOp/I2LuTmpSK9xDXlgJz3XN4cnpXWDmkNBKXR/VDMTCnAaEooxA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./stylesheets/bootstrap.min.css">    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+
+    <title>Document</title>
+</head>
+<body>
+    <header>
+    <nav id="owner" class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Navbar</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+      
+          <div class="collapse navbar-collapse" id="navbarColor02">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link " href="#">home
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/mydashboard.html">mydashborad</a>
+              </li>
+              <li class="nav-item">
+                <a id="todo" class="nav-link active" href="/addproducts.html">addproducts</a>
+                <span class="visually-hidden">(current)</span>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">myorders</a>
+              </li>
+              
+            </ul>
+    
+    
+            <div id="signedin">
+              <ul class="navbar-nav me-auto">
+              <li class="nav-item dropdown">
+                <a  id="welcomeowner" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">welcome user</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                  <div class="dropdown-divider"></div>
+                  <a id="logout1" class="dropdown-item" href="#">logout</a>
+                </div>
+              </li>
+               </ul>
+    
+            </div>
+
+
+
+
+
+    
+  <!--   
+            <div id="not-signedin">
+                      <input class=" me-sm-2 " id="username" type="text" placeholder="username">
+                      <input class=" me-sm-2" id="password" type="password" placeholder="password">
+    
+                      <select name="role" id="role" aria-placeholder="select your role">
+                        <option value="null">select your role</option> 
+                        <option value="custumer">custumer</option>
+                        <option value="owner">owner</option>
+                      </select>&nbsp;
+                      <button id="loginb"  class="btn btn-secondary ">submit</button>&nbsp;&nbsp;
+                      <button  class="g-signin2" data-onsuccess="onSignIn"></button>
+                      <button id="reg" class="btn btn-secondary my-2 my-sm-0">register</button>
+             </div>-->
+  
+  
+          </div> 
+        </div>
+      </nav>
+    </header>
+
+    
+    <div class="addproducts">
+
+      <label for="productname">productname</label>
+      <br>
+      <input type="text" id="productname" name="productname" placeholder="enterproductname" >
+      <br>
+
+      
+      <label for="price">price</label>
+      <br>
+      <input type="text" id="price" name="price" placeholder="enter price" >
+      <br>
+      
+       
+      <label for="quantity">quantity</label>
+      <br>
+      <input type="text" id="quantity" name="quantity" placeholder="enter quantity" >
+      <br>
+
+
+      <label for="producturl">producturl</label>
+      <br>
+      <input type="text" id="producturl" name="producturl" placeholder="enterprofileurl" >
+      <br>
+      <label for="mfg"> mfg:
+      </label>
+      <input type="date" id="mfg" name="mfg">
+      <br>
+
+      <label for="expdate">
+        exp
+      </label>
+      <input type="date" id="exp" name="exp">
+
+      <br>
+      <label for="discription">discription</label>
+      <input type="text" name="discription" id="discription">
+      <br>
+      <button id="addproduct" class=" btn btn-primary">addproduct</button>
+      <br>
+    </div>
+<!-- 
+/////////////////////////////////// -->
+    <div id="products" >
+
+          <div id="product1" >
+                
+            <div class="row">
+                <div class="offset-5 col-md-5">
+                  parachute oil
+                </div>                
+                <div class="offset-5 col-md-5">
+                <img class="productimage" style="height: 200px; width: 200px;" src="https://welldoneindia.co.in/wp-content/uploads/2020/07/Par-175-1024x1024.jpg" alt="parachuteoil" >
+                </div>  
+              </div>
+              
+             <div class="  container">   
+                  <div class="row">
+
+                        <div  class="  col-md-3">
+                          price:200
+                        </div>
+                              <div  class="  col-md-3">
+                                quantity:
+                              13/11/12
+                            </div>
+                            <div class="col-md-3">
+                                mfgdate:
+                                13/11/12
+                              </div>
+                              <div class="col-md-3">
+                                expdate:
+                                21/2/13
+                              </div>
+                      </div>
+              </div>
+      </div>
+
+    </div>
+
+
+
+
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/js/bootstrap.min.js" integrity="sha512-EKWWs1ZcA2ZY9lbLISPz8aGR2+L7JVYqBAYTq5AXgBkSjRSuQEGqWx8R1zAX16KdXPaCjOCaKE8MCpU0wcHlHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js" integrity="sha512-lbwH47l/tPXJYG9AcFNoJaTMhGvYWhVM9YI43CT+uteTRRaiLCui8snIgyAN8XWgNjNhCqlAUdzZptso6OCoFQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./javascripts/index.js"></script>
+
+    <script>
+      $('#addproduct').on('click',function()
+      {
+
+
+
+
+        console.log("added");
+        price=$("#price").val();
+        quantity=$('#quantity').val();
+        producturl=$('#producturl').val()
+        productname=$('#productname').val()
+        mfg=$("#mfg").val();
+        exp=$('#exp').val();
+        discription=$('#discription').val()
+
+
+        var x=localStorage.getItem("currentUser");
+       y= JSON.parse(x);
+
+
+        $.ajax({
+          type:"post",
+          url:"http://localhost:3000/addproduct",
+          data:{productname:productname,
+            picurl:producturl,
+            quantity:quantity,
+            price:price,
+            mfgdate:mfg,
+            expdate:exp,
+            discription:discription,
+            name:y.user
+          },
+          success:function(data)
+          {
+        var x=`<div id="product${2}" >
+            <div class="row">
+                <div class="offset-5 col-md-5">
+                  ${productname}
+                </div>                
+                <div class="offset-5 col-md-5">
+                <img class="productimage" style="height: 200px; width: 200px;" src=${producturl} alt="parachuteoil" >
+                </div>  
+              </div>
+              
+             <div class="  container">   
+                  <div class="row">
+
+                        <div  class="  col-md-3">
+                          price:${price}
+                        </div>
+                              <div  class="  col-md-3">
+                              mfgdate:
+                              ${mfg}
+                            </div>
+                            <div class="col-md-3">
+                              quantity:
+                                ${quantity}
+                              </div>
+                              <div class="col-md-3">
+                                expdate:
+                                ${exp}
+                              </div>
+                      </div>
+              </div>
+      </div>
+`
+      $("#products").append(x)
+
+
+
+          }
+
+
+
+
+
+
+        })
+        
+
+
+        
+//         var x=`<div id="product${2}" >
+//             <div class="row">
+//                 <div class="offset-5 col-md-5">
+//                   ${productname}
+//                 </div>                
+//                 <div class="offset-5 col-md-5">
+//                 <img class="productimage" style="height: 200px; width: 200px;" src=${producturl} alt="parachuteoil" >
+//                 </div>  
+//               </div>
+              
+//              <div class="  container">   
+//                   <div class="row">
+
+//                         <div  class="  col-md-3">
+//                           price:${price}
+//                         </div>
+//                               <div  class="  col-md-3">
+//                               mfgdate:
+//                               ${mfg}
+//                             </div>
+//                             <div class="col-md-3">
+//                               quantity:
+//                                 ${quantity}
+//                               </div>
+//                               <div class="col-md-3">
+//                                 expdate:
+//                                 ${exp}
+//                               </div>
+//                       </div>
+//               </div>
+//       </div>
+// `
+//       $("#products").append(x)
+
+
+
+
+
+
+
+
+      })
+
+    </script>
+
+
+
+
+
+
+
+</body>
+
+</html>

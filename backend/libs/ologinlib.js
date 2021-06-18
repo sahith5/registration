@@ -5,8 +5,12 @@ const mongoose=require('mongoose');
 module.exports={
     isvalid:function(obj,cb)
     {
-        var username=obj.username;
+        console.log(obj);
+        var username=obj.name;
         var password=obj.password;
+        
+        console.log(username);
+        console.log(password);
 
         var response={success:true,user:"user",userid:"userid"};
 
@@ -14,7 +18,7 @@ module.exports={
         {
 
 
-            console.log(datax);
+            console.log("owner details"+datax);
 
             if(datax.length==1)
             {
@@ -22,7 +26,7 @@ module.exports={
                 console.log(datax)
                             
                 response.success=true;
-                response.user=datax[0].username;
+                response.user=datax[0].name;
                 response.userid=datax[0]._id;
 
                 return cb(response);

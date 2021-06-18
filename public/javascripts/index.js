@@ -27,6 +27,15 @@ var userObject = {
         }
         return "";
     },
+    getcurrentrole : function()
+    {
+        var curUserrole = this.getCurrentUser();
+        if(curUserrole){
+            j=JSON.parse(curUserrole)
+            return j.role;
+        }
+        return ""; 
+    },
     isUserLoggedIn : function(){
         if(this.getCurrentUser()==null)
             return false;
@@ -46,13 +55,37 @@ var signedin=function(x) {
     if(x)
     {
         console.log("signed in 11 ")
-        $("#not-signedin").hide();
-        $("#signedin").show();
-        $("#welcomeUser").html("welcome"+"  "+userObject.getCurrentUserName());
+        $('#initial').hide()
+        console.log(userObject.getcurrentrole());
+        if(userObject.getcurrentrole()=='customer')
+        {
+            $('#customer').show()
+            $('#owner').hide()
+
+        }
+        else{
+            $('#customer').hide()
+            $('#owner').show()
+
+
+        }
+
+
+        // $("#not-signedin").hide();
+        // $("#signedin").show();
+        $("#welcomecustomer").html("welcome"+"  "+userObject.getCurrentUserName());
+
+        $("#welcomeowner").html("welcome"+"  "+userObject.getCurrentUserName());
+
+
+
 
     }
     else
     {  
+        $('#customer').hide();
+        $('#owner').hide();
+    $('#initial').show();
     $("#not-signedin").show();
     $("#signedin").hide();
        
@@ -79,6 +112,8 @@ $("#loginb").on("click",function()
     var password=$("#password").val();
     if(role=="custumer")
     {
+
+        console.log("custumer");
             var obj={username:username,password:password}
 
 
@@ -107,8 +142,9 @@ $("#loginb").on("click",function()
     }
     else
     {
+        console.log('owner login');
         var obj={name:username,password:password}
-        
+        console.log(obj);
         $.ajax({
             type:"post",
             data:obj,
@@ -117,7 +153,7 @@ $("#loginb").on("click",function()
             {
                 if(data)
                 {
-                    console.log(data);
+                console.log(data);
                 userObject.saveUserInLocalStorage(data)
                 signedin(true);
 
@@ -138,10 +174,28 @@ $("#loginb").on("click",function()
 )
 
 
-
-
-$('#logout').on('click',function()
+$('#customerlogout').on('click',function()
 {
+
+    console.log("logged out");
+
+
+    userObject.removeCurrentUser()
+    signedin(false);
+    gapi.auth2.getAuthInstance().signOut().then(function() {
+        console.log('user signed out')
+      })
+    
+})
+
+
+
+$('#logout1').on('click',function()
+{
+
+    console.log("logged out");
+
+
     userObject.removeCurrentUser()
     signedin(false);
     gapi.auth2.getAuthInstance().signOut().then(function() {
