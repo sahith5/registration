@@ -35,10 +35,10 @@
             </a>
           </li>
           <li class="nav-item">
-            <a id="toggle" class="nav-link  active" href="./shops.html">shops</a>
+            <a id="toggle" class="nav-link  " href="./shops.html">shops</a>
           </li>
           <li class="nav-item">
-            <a id="cart" class="nav-link" href="./cart.html">cart</a>
+            <a id="cart" class="nav-link active" href="./cart.html">cart</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">orders</a>
@@ -82,27 +82,13 @@
     </div>
   </nav>
 
+
+
+
+    <div class="mycart">
+
+    </div>
  
-
-
-     <h1>
-         shops 
-     </h1>
-
-
-     <div class="shops"  >
-
-      
-
-        
-      
-
-
-     </div>
-
-     <div class='productsfromshops'>
-
-     </div>
 
 
 
@@ -114,63 +100,31 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js" integrity="sha512-lbwH47l/tPXJYG9AcFNoJaTMhGvYWhVM9YI43CT+uteTRRaiLCui8snIgyAN8XWgNjNhCqlAUdzZptso6OCoFQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="./javascripts/index.js"></script>
 
-    <script>
-        $.ajax(
-            {
-                type:"get",
-                url:"http://localhost:3000/getshops",
-                success:function(data)
-                {
-                    console.log(data);
-                    for(var i=0;i<data.length;i++)
-                    {
-                      var name=data[i].name;
-                 
-                    var x=`      <div id="${data[i]._id}">
-                      <div>
-          
-                        <h2>shop owner</h2>
-                        </div>
-                        <h3> ${data[i].name}</h3>
-                        <div>
-                        <h2> shop name </h2>
-                        </div>
-                        <h3>${data[i].shopname}</h3>
-                      <div>
-                     <button  onclick="shop('${name}')">
-                          order from this shop        
-                      </button> 
-                    </div>
-                      </div>`
-                 $(".shops").append(x);
-           }}})
+   <script>
+    var x=localStorage.getItem("currentUser");
+     userdetails= JSON.parse(x);
+
+       $.ajax(
+           {
+               
+               type:"get",
+               url:"http://localhost:3000/customer/getkart"+userdetails.user,
+               success:function(data)
+               {
+                   console.log(data);
 
 
-        function shop(x)
-        {
-        $(".shops").hide()
-        $('#toggle').html("products")
-          $.ajax(
-            {
-              type:"get",
-              url:"http://localhost:3000/owner/myproducts"+x,
-              success:function(data)
-              {  console.log(data);
-                
-            for(var i=0;i<data.length;i++)
-            {
-             var y=data[i];
-      
-             var productname= y.productname.replace(" ", ",");
-             price=y.price;
-             picurl=y.picurl;
-            var kard=`<div id="product${y._id}" >
+                  for(var i=0;i<data.length;i++)
+                  {
+                    y=data[i];
+
+                   var kard=`<div id="product${y._id}" >
                       <div class="row">
                           <div class="offset-5 col-md-5">
                             ${y.productname}
                           </div>                
                           <div class="offset-5 col-md-5">
-                          <img class="productimage" style="height: 200px; width: 200px;" src=${y.picurl} alt="parachuteoil" >
+                          <img class="productimage" style="height: 200px; width: 200px;" src=${y.producturl} alt="parachuteoil" >
                           </div>  
                         </div>
                       <div class="  container">   
@@ -178,78 +132,24 @@
                                   <div  class="  col-md-3">
                                     price:${y.price}
                                   </div>
-                                  <div  class="  col-md-3">
-                                    mfgdate:
-                                    ${y.mfgdate}
-                                  </div>
+                                
                                   <div class="col-md-3">
-                                    quantity:
-                                    ${y.quantity}
+                                    ownername:
+                                    ${y.name}
                                   </div>
-                                  <div class="col-md-3">
-                                    expdate:
-                                    ${y.expdate}
-                                  </div>
+                                
                             </div>
                       </div>   
                    </div>
-
-
-                   <button onclick=addtocart('${x}','${productname}','${price}','${picurl}')>
-                        addtocart
-                    </button>
-
-                  ` 
-      $(".productsfromshops").append(kard)
-   
-    }}}
-      )
-      }
-
-
-    function addtocart(name,y,price,picurl)
-    {  
-      
-      
-      
-      var x=localStorage.getItem("currentUser");
-       userdetails= JSON.parse(x);
+                  `
+                  $(".mycart").append(kard);
+                  }
 
 
 
-
-       var productname= y.replace(",", " ");
-       console.log(name,productname,price,picurl);
-       var data= {
-         name:name,
-         producturl:picurl,
-         productname:productname,
-         price:price,
-         username:userdetails.user
-       }  
-      $.ajax({
-        type:"post",
-        url:"http://localhost:3000/customer/kart",
-        data:data,
-        success:function(data)
-        {
-          console.log(data);
-        }
-
-      }) 
-
-
-    
-    
-  }
-
-
-    </script>
-
-
-
-
+               }
+           }
+       )
+   </script>
 
 </body>
-
-

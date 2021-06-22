@@ -224,6 +224,27 @@ router.get("/getshops",function(req,res)
 })
 
 
+router.post("/customer/kart",function(req,res)
+{
+
+    customerlib.addtocart(req.body,function(data)
+    {
+
+        res.send("added successfrully")
+
+    })    
+})
+
+
+router.get("/customer/getkart:username",function(req,res)
+{
+    customerlib.getKartproducts(req.params.username,function(data)
+    {
+        res.json(data);
+    })
+})
+
+
 
 
 module.exports = router;

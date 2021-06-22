@@ -8,14 +8,14 @@ var schema=mongoose.Schema({
     isdeleted:Boolean,
     orders:[
         {
-        shopname:String,
+        name:String,
         producturl:String,
         productname:String,
         price:Number,    
         }],
     cart:[
             {
-                shopname:String,
+                name:String,
                 producturl:String,
                 productname:String,
                 price:Number,  

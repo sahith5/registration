@@ -13,29 +13,29 @@
     <title>Document</title>
 </head>
 <body>
-    <header>
+  <header>
     <nav id="owner" class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Navbar</a>
+          <!-- <a class="navbar-brand" href="#">Navbar</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-          </button>
+          </button> -->
       
           <div class="collapse navbar-collapse" id="navbarColor02">
             <ul class="navbar-nav me-auto">
               <li class="nav-item">
-                <a class="nav-link " href="#">home
+                <a class="nav-link " href="./index.html">Home
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/mydashboard.html">mydashborad</a>
+                <a class="nav-link" href="/mydashboard.html">My Dashboard</a>
               </li>
               <li class="nav-item">
-                <a id="todo" class="nav-link active" href="/addproducts.html">addproducts</a>
+                <a id="todo" class="nav-link active" href="/addproducts.html">Add Products</a>
                 <span class="visually-hidden">(current)</span>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">myorders</a>
+                <a class="nav-link" href="#">My Orders</a>
               </li>
               
             </ul>
@@ -44,7 +44,7 @@
             <div id="signedin">
               <ul class="navbar-nav me-auto">
               <li class="nav-item dropdown">
-                <a  id="welcomeowner" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">welcome user</a>
+                <a  id="welcomeowner" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Welcome user</a>
                 <div class="dropdown-menu">
                   <a class="dropdown-item" href="#">Action</a>
                   <a class="dropdown-item" href="#">Another action</a>
@@ -83,51 +83,54 @@
       </nav>
     </header>
 
-    
-    <div class="addproducts">
+    <div style="display: flex;flex-direction: column; margin-left:25vw; padding: auto;width:50vw;margin-top:2vw;">
+          
+      <div class="form-group">
 
-      <label for="productname">productname</label>
-      <br>
-      <input type="text" id="productname" name="productname" placeholder="enterproductname" >
-      <br>
+        <div   class="form-floating mb-3">
+          <input type="text" class="form-control"  id="productname"  placeholder="enterproductname" >
+          <label   for="productname">Enter Product name</label>
+        </div>
 
-      
-      <label for="price">price</label>
-      <br>
-      <input type="text" id="price" name="price" placeholder="enter price" >
-      <br>
-      
-       
-      <label for="quantity">quantity</label>
-      <br>
-      <input type="text" id="quantity" name="quantity" placeholder="enter quantity" >
-      <br>
+        <div class="form-floating mb-3">
+          <input type="text" id="price" class="form-control" placeholder="enter price" >
+          <label for="price">Price</label>
+        </div>
+        
+        
+        
+        <div class="form-floating mb-3">
+        
+          <input type="text" class="form-control" id="quantity" name="quantity" placeholder="enter quantity" >
+          <label for="quantity">Quantity</label>
+        </div>
+        <div class="form-floating mb-3">
+        <input type="text" id="producturl" class="form-control" name="producturl" placeholder="enterprofileurl" >
+        <label for="producturl">Product image URL</label>
+        </div>
 
+        <div class="form-floating mb-3"> 
+          <input type="date" class="form-control" id="mfg" name="mfg">
+          <label for="mfg"> Mfg date:</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="date" class="form-control" id="exp" name="exp">
+          <label for="exp">Expiry Date:</label>
+        </div>
+        
 
-      <label for="producturl">producturl</label>
-      <br>
-      <input type="text" id="producturl" name="producturl" placeholder="enterprofileurl" >
-      <br>
-      <label for="mfg"> mfg:
-      </label>
-      <input type="date" id="mfg" name="mfg">
-      <br>
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" name="discription" id="discription">
+          <label for="discription">Description</label>
+        </div>
 
-      <label for="expdate">
-        exp
-      </label>
-      <input type="date" id="exp" name="exp">
-
-      <br>
-      <label for="discription">discription</label>
-      <input type="text" name="discription" id="discription">
-      <br>
-      <button id="addproduct" class=" btn btn-primary">addproduct</button>
-      <br>
+        
+        <button id="addproduct" class="btn btn-primary">Add Product</button>
+      </div>
     </div>
 <!-- 
 /////////////////////////////////// -->
-    <div id="products" >
+    <div id="products" class="form-group" >
 
           <div id="product1" >
                 
@@ -163,9 +166,6 @@
       </div>
 
     </div>
-
-
-
 
 
 

@@ -28,11 +28,27 @@ module.exports={
     addtocart: async function(data,cb)
     {
         o=await customermodel.findOne({username:data.username})
-        o.cart.push(data);
-        console.log(o.cart.length);
+        o.cart.push(data)
+        // console.log(o.cart+"from customerlibs");
+        
+        // o[0].cart.push(data);
+        // console.log(o+"from customer libs")
+        // console.log(o.cart.length);
         o1=await customermodel.updateOne({username:data.username},{$set:{cart:o.cart}})
-        return cb(o1);
+        console.log(o1+"from customerlibs");
+
+        return cb("added successfully");
     },
+    getKartproducts:function(data,cb)
+    {
+        console.log(data);
+        customermodel.find({username:data},function(err,documents)
+        {
+            console.log("my products"+documents[0].cart);
+           return cb(documents[0].cart);
+        })
+
+    }
 
 
 
