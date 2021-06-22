@@ -6,9 +6,25 @@ var schema=mongoose.Schema({
     profilepicurl:String,
     password:String,
     isdeleted:Boolean,
-    tasks:[String],
-},
-{
+    orders:[
+        {
+        shopname:String,
+        producturl:String,
+        productname:String,
+        price:Number,    
+        }],
+    cart:[
+            {
+                shopname:String,
+                producturl:String,
+                productname:String,
+                price:Number,  
+            }
+    ]
+    },
+
+        {
+
     timestamps:true
 });
 module.exports=mongoose.model("usertable",schema );

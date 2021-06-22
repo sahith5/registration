@@ -9,6 +9,8 @@ const register = require('../backend/model/register');
 const kiranaregisterlib=require('../backend/libs/kiranaregisterlib');
 const ologinlib=require('../backend/libs/ologinlib');
 const ownerlibs=require('../backend/libs/ownerlibs');
+const customerlib = require('../backend/libs/customerlib');
+const { route } = require('./users');
 /* GET home page. */
 
 
@@ -191,6 +193,7 @@ router.post("/addproduct",function(req,res)
    ownerlibs.addproduct(req.body,function(data)
    {
        console.log(data);
+       res.json(data);
    })
 })
 
@@ -202,14 +205,23 @@ router.get('/owner/myproducts:user',function(req,res)
     ownerlibs.getproducts({name:req.params.user},function(datax)
     {
         console.log(datax);
+        res.json(datax);
     })
-
-    
-  res.send("   ")
 
 
 })
 
+
+router.get("/getshops",function(req,res)
+{
+    customerlib.getshops(function(x)
+    {
+        res.json(x);
+    })
+
+    console.log("call landed in get shops");
+    
+})
 
 
 

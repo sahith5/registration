@@ -184,7 +184,6 @@
 
 
 
-        console.log("added");
         price=$("#price").val();
         quantity=$('#quantity').val();
         producturl=$('#producturl').val()
@@ -212,6 +211,12 @@
           },
           success:function(data)
           {
+
+            console.log(data);
+
+
+
+
         var x=`<div id="product${2}" >
             <div class="row">
                 <div class="offset-5 col-md-5">

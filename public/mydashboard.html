@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css" integrity="sha512-Ez0cGzNzHR1tYAv56860NLspgUGuQw16GiOOp/I2LuTmpSK9xDXlgJz3XN4cnpXWDmkNBKXR/VDMTCnAaEooxA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./stylesheets/bootstrap.min.css">    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
@@ -110,9 +111,54 @@
            url:"http://localhost:3000/owner/myproducts"+y.user,
            success:function(data)
            {
-             console.log(data+"from my dashborads");
-             $('.myproducts').append(data);
-           }
+
+         
+
+            for(var i=0;i<data.length;i++)
+            {
+             console.log(data[i]);
+             y=data[i];
+            var x=`<div id="product${y._id}" >
+            <div class="row">
+                <div class="offset-5 col-md-5">
+                  ${y.productname}
+                </div>                
+                <div class="offset-5 col-md-5">
+                <img class="productimage" style="height: 200px; width: 200px;" src=${y.picurl} alt="parachuteoil" >
+                </div>  
+              </div>
+              
+             <div class="  container">   
+                  <div class="row">
+
+                        <div  class="  col-md-3">
+                          price:${y.price}
+                        </div>
+                              <div  class="  col-md-3">
+                              mfgdate:
+                              ${y.mfgdate}
+                            </div>
+                            <div class="col-md-3">
+                              quantity:
+                                ${y.quantity}
+                              </div>
+                              <div class="col-md-3">
+                                expdate:
+                                ${y.expdate}
+                              </div>
+                      </div>
+              </div>
+      </div>
+`
+      $(".myproducts").append(x)
+    }
+
+
+
+
+
+            
+            }
          }
        )
 
