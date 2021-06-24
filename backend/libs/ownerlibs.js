@@ -19,8 +19,34 @@ module.exports={
            return cb(documents[0].products);
         })
 
-    }
+    },
 
+
+    order: async function(data,cb)
+    {
+        o=await model.findOne({name:data.name})
+        o.orders.push(data)
+        // console.log(o.cart+"from customerlibs");
+        // o[0].cart.push(data);
+        // console.log(o+"from customer libs")
+        // console.log(o.cart.length);
+        o1=await model.updateOne({name:data.name},{$set:{orders:o.orders}})
+        console.log(o1+"from customerlibs");
+
+        return cb("added successfully");
+    },
+
+
+    getorderproducts:function(data,cb)
+    {
+        console.log(data);
+        model.find({name:data},function(err,documents)
+        {
+            console.log("my products"+documents[0].orders);
+           return cb(documents[0].orders);
+        })
+
+    },
 
 
 

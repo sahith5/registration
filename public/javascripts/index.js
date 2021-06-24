@@ -174,17 +174,17 @@ $("#loginb").on("click",function()
 )
 
 
+
 $('#customerlogout').on('click',function()
 {
 
     console.log("logged out");
-
-
     userObject.removeCurrentUser()
-    signedin(false);
     gapi.auth2.getAuthInstance().signOut().then(function() {
         console.log('user signed out')
       })
+      signedin(false);
+   
     
 })
 
@@ -197,10 +197,14 @@ $('#logout1').on('click',function()
 
 
     userObject.removeCurrentUser()
-    signedin(false);
+
+
     gapi.auth2.getAuthInstance().signOut().then(function() {
         console.log('user signed out')
       })
+      signedin(false);
+
+
     
 })
 

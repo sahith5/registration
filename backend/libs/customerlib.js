@@ -48,7 +48,38 @@ module.exports={
            return cb(documents[0].cart);
         })
 
-    }
+    },
+
+
+    order: async function(data,cb)
+    {
+        o=await customermodel.findOne({username:data.username})
+        o.orders.push(data)
+        // console.log(o.cart+"from customerlibs");
+        
+        // o[0].cart.push(data);
+        // console.log(o+"from customer libs")
+        // console.log(o.cart.length);
+        o1=await customermodel.updateOne({username:data.username},{$set:{orders:o.orders}})
+        console.log(o1+"from customerlibs");
+
+        return cb("added successfully");
+    },
+
+
+
+    getorderproducts:function(data,cb)
+    {
+        console.log(data);
+        customermodel.find({username:data},function(err,documents)
+        {
+            console.log("my products"+documents[0].orders);
+           return cb(documents[0].orders);
+        })
+
+    },
+    
+
 
 
 

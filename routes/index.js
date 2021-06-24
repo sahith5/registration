@@ -22,10 +22,8 @@ router.get('/', function(req, res) {
 router.get('/logout',function(req,res)
 {
 
-
-
-
-
+    req.session.user={};
+    res.send("logged out");
 })
 
 
@@ -243,6 +241,62 @@ router.get("/customer/getkart:username",function(req,res)
         res.json(data);
     })
 })
+
+
+router.post("/order",function(req,res)
+{
+    // console.log(req.body);
+
+    customerlib.order(req.body,function(data)
+    {
+
+        res.send("added successfrully")
+
+    })    
+})
+
+
+router.get("/customer/getorders:username",function(req,res)
+{
+    customerlib.getorderproducts(req.params.username,function(data)
+    {
+        res.json(data);
+    })
+})
+
+
+
+//////////////////////////////////////
+
+router.post("/owner/order",function(req,res)
+{
+    // console.log(req.body);
+
+    ownerlibs.order(req.body,function(data)
+    {
+        console.log(JSON.stringify(data));
+
+        res.send("added successfrully")
+
+    })    
+})
+
+
+
+router.get("/owner/getorders:name",function(req,res)
+{
+    ownerlibs.getorderproducts(req.params.name,function(data)
+    {
+        res.json(data);
+    })
+})
+
+
+
+
+
+
+
 
 
 

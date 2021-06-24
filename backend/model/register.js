@@ -15,7 +15,7 @@ var schema=mongoose.Schema({
         }],
     cart:[
             {
-                name:String,
+                username:String,
                 producturl:String,
                 productname:String,
                 price:Number,  

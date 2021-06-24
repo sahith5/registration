@@ -27,14 +27,14 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link active" href="/mydashboard.html">mydashborad</a>
+                    <a class="nav-link " href="/mydashboard.html">mydashborad</a>
                   </li>
                   <li class="nav-item">
                     <a id="todo" class="nav-link " href="/addproducts.html">addproducts</a>
                     <span class="visually-hidden">(current)</span>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="./ownerorders.html">myorders</a>
+                    <a class="nav-link active" href="/ownerorders.html">myorders</a>
                   </li>
                   
                 </ul>
@@ -83,7 +83,7 @@
         </header>
     
 
-        <div class="myproducts">
+        <div class="myorders">
 
         </div>
     
@@ -103,66 +103,54 @@
        y= JSON.parse(x);
 
 
-
-
        $.ajax(
          {
-           type:"get",
-           url:"http://localhost:3000/owner/myproducts"+y.user,
+           typr:"get",
+           url:"http://localhost:3000/owner/getorders"+y.user,
            success:function(data)
            {
+             console.log(data);
 
-         
 
-            for(var i=0;i<data.length;i++)
-            {
-             console.log(data[i]);
-             y=data[i];
-            var x=`<div id="product${y._id}" >
-            <div class="row">
-                <div class="offset-5 col-md-5">
-                  ${y.productname}
-                </div>                
-                <div class="offset-5 col-md-5">
-                <img class="productimage" style="height: 200px; width: 200px;" src=${y.picurl} alt="parachuteoil" >
-                </div>  
-              </div>
-              
-             <div class="  container">   
-                  <div class="row">
+             
+             for(var i=0;i<data.length;i++)
+                  {
+                    y=data[i];
 
-                        <div  class="  col-md-3">
-                          price:${y.price}
+                   var kard=`<div id="product${y._id}" >
+                      <div class="row">
+                          <div class="offset-5 col-md-5">
+                            ${y.productname}
+                          </div>                
+                          <div class="offset-5 col-md-5">
+                          <img class="productimage" style="height: 200px; width: 200px;" src=${y.producturl} alt="parachuteoil" >
+                          </div>  
                         </div>
-                              <div  class="  col-md-3">
-                              mfgdate:
-                              ${y.mfgdate}
+                      <div class="  container">   
+                            <div class="row">
+                                  <div  class="  col-md-3">
+                                    price:${y.price}
+                                  </div>
+                                
+                                  <div class="col-md-3">
+                                    customer:
+                                    ${y.name}
+                                  </div>
+                                
                             </div>
-                            <div class="col-md-3">
-                              quantity:
-                                ${y.quantity}
-                              </div>
-                              <div class="col-md-3">
-                                expdate:
-                                ${y.expdate}
-                              </div>
-                      </div>
-              </div>
-      </div>
-`
-      $(".myproducts").append(x)
-    }
+                      </div>   
+                   </div>
+                  `
+                  $(".myorders").append(kard);
+                  }
 
 
 
 
-
-            
-            }
+           }
          }
        )
-
-
+       
 
 
 

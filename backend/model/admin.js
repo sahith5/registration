@@ -18,9 +18,10 @@ var schema=mongoose.Schema(
             }
         ],
         orders:[
-            {
-                orederby:String,
-                productordered:String,
+                {name:String,
+                producturl:String,
+                productname:String,
+                price:Number,   
             }
         ]
 
