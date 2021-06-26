@@ -151,7 +151,7 @@
            {
                
                type:"get",
-               url:"http://localhost:3000/customer/getkart"+userdetails.user,
+               url:"https://regiistration.herokuapp.com/customer/getkart"+userdetails.user,
                success:function(data)
                {
                    console.log(data);
@@ -202,7 +202,7 @@
            {
              type:"post",
            
-             url:"http://localhost:3000/removefromcart"+userdetails.user,
+             url:"https://regiistration.herokuapp.com/removefromcart"+userdetails.user,
              data:{_id:id},
              success:function(data)
              {
