@@ -78,7 +78,33 @@ module.exports={
         })
 
     },
+
     
+
+    removefromcart: async function(data,cb)
+    {
+        o=await customermodel.findOne({username:data.username})
+
+        var cart=o.cart.filter(function(value)
+        {
+
+            console.log(value._id,data._id);
+            return toString(value._id)== toString(data._id);
+        })
+
+
+
+        // console.log(o.cart+"from customerlibs");
+        
+        // o[0].cart.push(data);
+        // console.log(o+"from customer libs")
+        // console.log(o.cart.length);
+        o1=await customermodel.updateOne({username:data.username},{$set:{cart:o.cart}})
+        console.log(JSON.stringify(o1)+"from customerlibs");
+
+        return cb("deletd successfully");
+    },
+
 
 
 

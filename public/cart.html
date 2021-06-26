@@ -13,6 +13,44 @@
     <link rel="stylesheet" href="./stylesheets/bootstrap.min.css">    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 
+    <style>
+      .myproducts{
+        margin:80px auto;
+      }
+      table{
+        width:100%;
+        border-collapse:collapse ;
+      }
+      .cartitem{
+        display: flex;
+        flex-wrap: wrap;
+      }
+      img{
+        height: 80px;
+        width: 80px;
+      }
+      p{
+        padding-left:10px;
+      }
+      th{
+        text-align: left;
+        padding: 5px;
+        color: white;
+        background: #0d6efd;
+      }
+      td{
+        padding:20px 5px;
+      }
+      td input{
+        width:50px;
+        height:30px;
+        padding: 5px;
+      }
+      a{
+        color:#0d6efd;
+      }
+    
+    </style>
 </head>
 
 <body>
@@ -22,26 +60,26 @@
     //////////////////////////     -->
 <nav id="customer" class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+      <a class="navbar-brand" href="#">E-dhukaan</a>
+      <button class="navbar-toggler"  styke="float:right"type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
   
       <div class="collapse navbar-collapse" id="navbarColor02">
         <ul class="navbar-nav me-auto">
           <li class="nav-item">
-            <a class="nav-link " href="">Home
+            <a class="nav-link " href="#">Home
               <span class="visually-hidden">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a id="toggle" class="nav-link  " href="./shops.html">shops</a>
+            <a id="toggle" class="nav-link  " href="./shops.html">Shops</a>
           </li>
           <li class="nav-item">
-            <a id="cart" class="nav-link active" href="./cart.html">cart</a>
+            <a id="cart" class="nav-link active" href="./cart.html">Cart</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./customerorders.html">orders</a>
+            <a class="nav-link" href="./customerorders.html">Orders</a>
           </li>
           
         </ul>
@@ -56,7 +94,7 @@
               <a class="dropdown-item" href="#">Another action</a>
               <a class="dropdown-item" href="#">Something else here</a>
               <div class="dropdown-divider"></div>
-              <a id="customerlogout" class="dropdown-item  customerlogout" href="#">logout</a>
+              <a id="customerlogout" class="dropdown-item" href="#">logout</a>
             </div>
           </li>
            </ul>
@@ -85,9 +123,14 @@
 
 
 
-    <div class="mycart">
-
-    </div>
+  <div >
+    <table class="mycart">
+      <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Subtotal</th>
+    </table>
+  </div>
  
 
 
@@ -117,32 +160,28 @@
                   for(var i=0;i<data.length;i++)
                   {
                     y=data[i];
+                    console.log(y)
+                    var x=`
+            <tr id="product${y._id}">
+              <td>
+                <div class="cartitem">
+                  <img src=${y.producturl} alt="" srcset="">
+                  <div>
+                    <p>${y.productname} <br>
+                      Price: ${y.price} <br>
+                      
+                    </p>
+                    <!-- <small>Price:10</small><br> -->
+                  </div>
+                </div>
 
-                   var kard=`<div id="product${y._id}" >
-                      <div class="row">
-                          <div class="offset-5 col-md-5">
-                            ${y.productname}
-                          </div>                
-                          <div class="offset-5 col-md-5">
-                          <img class="productimage" style="height: 200px; width: 200px;" src=${y.producturl} alt="parachuteoil" >
-                          </div>  
-                        </div>
-                      <div class="  container">   
-                            <div class="row">
-                                  <div  class="  col-md-3">
-                                    price:${y.price}
-                                  </div>
-                                
-                                  <div class="col-md-3">
-                                    ownername:
-                                    ${y.name}
-                                  </div>
-                                
-                            </div>
-                      </div>   
-                   </div>
-                  `
-                  $(".mycart").append(kard);
+              </td>
+              <td><input type="number" name="" id="" value="1"><br>
+                <a href="#" onclick=removefromcart('${y._id}')> Remove</a></td>
+              <td>Rs.10</td>
+            </tr>
+          `
+                  $(".mycart").append(x);
                   }
 
 
@@ -150,6 +189,32 @@
                }
            }
        )
+
+
+
+       function removefromcart(id)
+       {
+        console.log(userdetails.user)
+         console.log(typeof(id));
+         console.log(id);
+
+         $.ajax(
+           {
+             type:"post",
+           
+             url:"http://localhost:3000/removefromcart"+userdetails.user,
+             data:{_id:id},
+             success:function(data)
+             {
+               
+               console.log(data)
+             }
+
+        
+           }
+         )
+
+       }
    </script>
 
 </body>

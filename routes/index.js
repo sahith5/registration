@@ -292,7 +292,22 @@ router.get("/owner/getorders:name",function(req,res)
 })
 
 
+router.post("/removefromcart:username",function(req,res)
+{
 
+    console.log(req.body);
+
+    customerlib.removefromcart({username:req.params.username,_id:req.body._id},function(data)
+    {
+        res.send(data);
+    })
+
+    
+
+
+
+
+})
 
 
 

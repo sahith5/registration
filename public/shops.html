@@ -12,7 +12,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css" integrity="sha512-Ez0cGzNzHR1tYAv56860NLspgUGuQw16GiOOp/I2LuTmpSK9xDXlgJz3XN4cnpXWDmkNBKXR/VDMTCnAaEooxA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./stylesheets/bootstrap.min.css">    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
-
+  <style>
+    body{
+      background:#222;
+    }
+  </style>
 </head>
 
 <body>
@@ -22,26 +26,26 @@
     //////////////////////////     -->
 <nav id="customer" class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
   
       <div class="collapse navbar-collapse" id="navbarColor02">
+        <a class="navbar-brand" href="#">E-dhukaan</a>
         <ul class="navbar-nav me-auto">
           <li class="nav-item">
-            <a class="nav-link " href="">Home
+            <a class="nav-link " href="./index.html">Home
               <span class="visually-hidden">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a id="toggle" class="nav-link  active" href="./shops.html">shops</a>
+            <a id="toggle" class="nav-link  active" href="./shops.html">Shops</a>
           </li>
           <li class="nav-item">
-            <a id="cart" class="nav-link" href="./cart.html">cart</a>
+            <a id="cart" class="nav-link" href="./cart.html">Cart</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./customerorders.html">orders</a>
+            <a class="nav-link" href="./customerorders.html">Orders</a>
           </li>
           
         </ul>
@@ -56,51 +60,56 @@
               <a class="dropdown-item" href="#">Another action</a>
               <a class="dropdown-item" href="#">Something else here</a>
               <div class="dropdown-divider"></div>
-              <a id="customerlogout" class="dropdown-item  customerlogout" href="">logout</a>
+              <a id="customerlogout" class="dropdown-item" href="#">logout</a>
             </div>
           </li>
            </ul>
 
         </div>
 
-
-        <!-- <div id="not-signedin">
-                  <input class=" me-sm-2 " id="username" type="text" placeholder="username">
-                  <input class=" me-sm-2" id="password" type="password" placeholder="password">
-
-                  <select name="role" id="role" aria-placeholder="select your role">
-                    <option value="null">select your role</option> 
-                    <option value="custumer">custumer</option>
-                    <option value="owner">owner</option>
-                  </select>&nbsp;
-                  <button id="loginb"  class="btn btn-secondary ">submit</button>&nbsp;&nbsp;
-                  <button  class="g-signin2" data-onsuccess="onSignIn"></button>
-                  <button id="reg" class="btn btn-secondary my-2 my-sm-0">register</button>
-         </div> -->
-
       </div>
     </div>
   </nav>
 
- 
 
 
-     <h1>
-         shops 
-     </h1>
+     <style>
+       .productsfromshops,.shops{
+         
+         margin:auto;
+         padding-left: 25px;
+         padding-right: 25px;
+         margin-left: 8%;
+         margin-right: 8%;
+         border-radius: 2%;
+         background: #303030!important;
+       }
+       .product{
+         margin: 15px;
+         flex-basis: 22%;
+         min-width: 200px;
+         border:solid #222;
+         padding:5px;
+         border-radius: 3%;
+       }
+       img{
+         width:100%;
+         height: 200px;
+       }
+     </style>
 
 
-     <div class="shops"  >
+    <div class="shops"  >
+      <div class="row_shops">
 
-      
-
-        
-      
-
-
-     </div>
+      </div>
+    </div>
 
      <div class='productsfromshops'>
+       <div class="row">
+
+        </div>
+       </div>
 
      </div>
 
@@ -118,42 +127,48 @@
         $.ajax(
             {
                 type:"get",
-                url:"http://localhost:3000/getshops",
+                url:"Homehttps://regiistration.herokuapp.com/getshops",
                 success:function(data)
                 {
                     console.log(data);
                     for(var i=0;i<data.length;i++)
                     {
                       var name=data[i].name;
-                 
-                    var x=`      <div id="${data[i]._id}">
-                      <div>
+                      var kard=`<div class="product" id="${data[i]._id}">
+                          <p>Shop Name: ${data[i].shopname}</p><br>
+                          <p>Shop Owner: ${data[i].name}</p><br>
+                          <button  onclick="shop('${name}')">Order from this Shop  </button> 
+           
+         </div>` 
+      $(".row_shops").append(kard)
+                //     var x=`      <div id="${data[i]._id}">
+                //       <div>
 
-                        <h2>shop owner</h2>
-                        </div>
-                        <h3> ${data[i].name}</h3>
-                        <div>
-                        <h2> shop name </h2>
-                        </div>
-                        <h3>${data[i].shopname}</h3>
-                      <div>
-                     <button  onclick="shop('${name}')">
-                          order from this shop        
-                      </button> 
-                    </div>
-                      </div>`
-                 $(".shops").append(x);
+                //         <h2>shop owner</h2>
+                //         </div>
+                //         <h3> ${data[i].name}</h3>
+                //         <div>
+                //         <h2> shop name </h2>
+                //         </div>
+                //         <h3>${data[i].shopname}</h3>
+                //       <div>
+                //      <button  onclick="shop('${name}')">
+                //           order from this shop        
+                //       </button> 
+                //     </div>
+                //       </div>`
+                //  $(".shops").append(x);
            }}})
 
 
         function shop(x)
         {
         $(".shops").hide()
-        $('#toggle').html("products")
+        $('#toggle').html("Products")
           $.ajax(
             {
               type:"get",
-              url:"http://localhost:3000/owner/myproducts"+x,
+              url:"Homehttps://regiistration.herokuapp.com/owner/myproducts"+x,
               success:function(data)
               {  console.log(data);
                 
@@ -164,44 +179,20 @@
              var productname= y.productname.replace(" ", ",");
              price=y.price;
              picurl=y.picurl;
-            var kard=`<div id="product${y._id}" >
-                      <div class="row">
-                          <div class="offset-5 col-md-5">
-                            ${y.productname}
-                          </div>                
-                          <div class="offset-5 col-md-5">
-                          <img class="productimage" style="height: 200px; width: 200px;" src=${y.picurl} alt="parachuteoil" >
-                          </div>  
-                        </div>
-                      <div class="  container">   
-                            <div class="row">
-                                  <div  class="  col-md-3">
-                                    price:${y.price}
-                                  </div>
-                                  <div  class="  col-md-3">
-                                    mfgdate:
-                                    ${y.mfgdate}
-                                  </div>
-                                  <div class="col-md-3">
-                                    quantity:
-                                    ${y.quantity}
-                                  </div>
-                                  <div class="col-md-3">
-                                    expdate:
-                                    ${y.expdate}
-                                  </div>
-                            </div>
-                      </div>   
-                   </div>
-
-
-                   <button onclick=addtocart('${x}','${productname}','${price}','${picurl}')>
-                        addtocart
-                    </button>
-                    <button  onclick=orderthisproduct('${x}','${productname}','${price}','${picurl}')>   order   </button> 
-
-                  ` 
-      $(".productsfromshops").append(kard)
+             var kard=`<div class="product">
+           <img src=${picurl} alt="">
+           <p><h3>${y.productname} </h3><br>
+            Price: ${price} <br>
+            Mfg Date: ${y.mfgdate} <br>
+            Exp Date: ${y.expdate}<br>
+            
+            <button onclick=addtocart('${x}','${productname}','${price}','${picurl}')>
+                 Add to cart
+            </button>
+            <button  onclick=orderthisproduct('${x}','${productname}','${price}','${picurl}')>   order   </button>
+           
+         </div>` 
+      $(".row").append(kard)
    
     }}}
       )
@@ -230,7 +221,7 @@
        }  
       $.ajax({
         type:"post",
-        url:"http://localhost:3000/customer/kart",
+        url:"Homehttps://regiistration.herokuapp.com/customer/kart",
         data:data,
         success:function(data)
         {
@@ -267,7 +258,7 @@
        }  
       $.ajax({
         type:"post",
-        url:"http://localhost:3000/order",
+        url:"Homehttps://regiistration.herokuapp.com/order",
         data:data,
         success:function(data)
         {
@@ -279,7 +270,7 @@
 
       $.ajax({
         type:"post",
-        url:"http://localhost:3000/owner/order",
+        url:"Homehttps://regiistration.herokuapp.com/owner/order",
         data:data,
         success:function(data)
         {
@@ -312,5 +303,3 @@
 
 
 </body>
-
-

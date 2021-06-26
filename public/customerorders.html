@@ -22,7 +22,7 @@
     //////////////////////////     -->
 <nav id="customer" class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar</a>
+      <a class="navbar-brand" href="#">E-dhukaan</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -35,13 +35,13 @@
             </a>
           </li>
           <li class="nav-item">
-            <a id="toggle" class="nav-link  " href="./shops.html">shops</a>
+            <a id="toggle" class="nav-link  " href="./shops.html">Shops</a>
           </li>
           <li class="nav-item">
-            <a id="cart" class="nav-link " href="./cart.html">cart</a>
+            <a id="cart" class="nav-link " href="./cart.html">Cart</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="./customerorders.html">orders</a>
+            <a class="nav-link active" href="./customerorders.html">Orders</a>
           </li>
           
         </ul>
@@ -83,10 +83,35 @@
   </nav>
 
 
-
+  <style>
+    .orders{
+      
+      margin:auto;
+      padding-left: 25px;
+      padding-right: 25px;
+      margin-left: 8%;
+      margin-right: 8%;
+      border-radius: 2%;
+      background: #303030!important;
+    }
+    .product{
+      margin: 15px;
+      flex-basis: 22%;
+      min-width: 200px;
+      border:solid #222;
+      padding:5px;
+      border-radius: 3%;
+    }
+    img{
+      width:100%;
+      height: 200px;
+    }
+  </style>
 
     <div class="orders">
-
+      <div class="row">
+        
+      </div>
     </div>
  
 
@@ -117,32 +142,39 @@
                   for(var i=0;i<data.length;i++)
                   {
                     y=data[i];
+                    var kard=`
+                    <div class="product" id="product${y._id}">
+           <img src=${y.producturl} alt="">
+           <p><h3>${y.productname} </h3><br>
+            Price: ${y.price} <br>
+            Owner:${y.name}<br>
 
-                   var kard=`<div id="product${y._id}" >
-                      <div class="row">
-                          <div class="offset-5 col-md-5">
-                            ${y.productname}
-                          </div>                
-                          <div class="offset-5 col-md-5">
-                          <img class="productimage" style="height: 200px; width: 200px;" src=${y.producturl} alt="parachuteoil" >
-                          </div>  
-                        </div>
-                      <div class="  container">   
-                            <div class="row">
-                                  <div  class="  col-md-3">
-                                    price:${y.price}
-                                  </div>
+         </div>` 
+                  //  var kard=`<div id="product${y._id}" >
+                  //     <div class="row">
+                  //         <div class="offset-5 col-md-5">
+                  //           ${y.productname}
+                  //         </div>                
+                  //         <div class="offset-5 col-md-5">
+                  //         <img class="productimage" style="height: 200px; width: 200px;" src=${y.producturl} alt="parachuteoil" >
+                  //         </div>  
+                  //       </div>
+                  //     <div class="  container">   
+                  //           <div class="row">
+                  //                 <div  class="  col-md-3">
+                  //                   price:${y.price}
+                  //                 </div>
                                 
-                                  <div class="col-md-3">
-                                    ownername:
-                                    ${y.name}
-                                  </div>
+                  //                 <div class="col-md-3">
+                  //                   ownername:
+                  //                   ${y.name}
+                  //                 </div>
                                 
-                            </div>
-                      </div>   
-                   </div>
-                  `
-                  $(".orders").append(kard);
+                  //           </div>
+                  //     </div>   
+                  //  </div>
+                  // `
+                  $(".row").append(kard);
                   }
 
 

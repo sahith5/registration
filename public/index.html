@@ -19,7 +19,9 @@
 
     <nav id="initial" class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">
+          E-dhukaan
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -27,22 +29,22 @@
         <div class="collapse navbar-collapse" id="navbarColor02">
           <ul class="navbar-nav me-auto">
             <li class="nav-item">
-              <a class="nav-link active" href="#">Home
+              <!-- <a class="nav-link active" href="#">Home -->
                 <span class="visually-hidden">(current)</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Features</a>
+              <!-- <a class="nav-link" href="#">Features</a> -->
             </li>
             <li class="nav-item">
-              <a id="cart" class="nav-link" href="#">about</a>
+              <!-- <a id="cart" class="nav-link" href="#">about</a> -->
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">contact</a>
+              <!-- <a class="nav-link" href="#">contact</a> -->
             </li>
             
           </ul>
-          <div id="signedin">
+          <div id="signedin" style="">
             <ul class="navbar-nav me-auto">
             <li class="nav-item dropdown">
               <a  id="welcomeuser class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">welcome user</a>
@@ -60,18 +62,23 @@
         
   
   
-          <div id="not-signedin">
+          <div id="not-signedin" style="">
                     <input class=" me-sm-2 " id="username" type="text" placeholder="username">
                     <input class=" me-sm-2" id="password" type="password" placeholder="password">
+                    <select name="role" id="role"  aria-label="Default select example">
+                      <option selected>select your role</option>
+                      <option value="custumer">customer</option>
+                      <option value="owner">owner</option>
+                    </select>&nbsp
   
-                    <select name="role" id="role" aria-placeholder="select your role">
+                    <!-- <select name="role" id="role" aria-placeholder="select your role">
                       <option value="null">select your role</option> 
                       <option value="custumer">custumer</option>
                       <option value="owner">owner</option>
-                    </select>&nbsp;
+                    </select>&nbsp; -->
                     <button id="loginb"  class="btn btn-secondary ">submit</button>&nbsp;&nbsp;
                     <button  class="g-signin2" data-onsuccess="onSignIn"></button>
-                    <button id="reg" class="btn btn-secondary my-2 my-sm-0">register</button>
+                    <!-- <button id="reg" class="btn btn-secondary my-2 my-sm-0">register</button> -->
            </div>
         </div>
       </div>
@@ -85,7 +92,7 @@
     //////////////////////////     -->
 <nav id="customer" class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar</a>
+      <a class="navbar-brand" href="#">E-dhukaan</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -98,13 +105,13 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./shops.html">shops</a>
+            <a class="nav-link" href="./shops.html">Shops</a>
           </li>
           <li class="nav-item">
-            <a id="cart" class="nav-link" href="./cart.html">cart</a>
+            <a id="cart" class="nav-link" href="./cart.html">Cart</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./customerorders.html">orders</a>
+            <a class="nav-link" href="./customerorders.html">Orders</a>
           </li>
           
         </ul>
@@ -152,7 +159,7 @@
 
     <nav id="owner" class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">E-dhukaan</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -160,18 +167,18 @@
         <div class="collapse navbar-collapse" id="navbarColor02">
           <ul class="navbar-nav me-auto">
             <li class="nav-item">
-              <a class="nav-link active" href="index.html">home
+              <a class="nav-link active" href="index.html">Home
                 <span class="visually-hidden">(current)</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/mydashboard.html">mydashborad</a>
+              <a class="nav-link" href="/mydashboard.html">MyDashborad</a>
             </li>
             <li class="nav-item">
-              <a id="cart" class="nav-link" href="/addproducts.html">addproducts</a>
+              <a id="cart" class="nav-link" href="/addproducts.html">AddProducts</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./ownerorders.html">myorders</a>
+              <a class="nav-link" href="./ownerorders.html">MyOrders</a>
             </li>
             
           </ul>
@@ -214,13 +221,47 @@
     </nav>
 
 
+    <h1 style="margin: 40px 60px;" class="text-center">Everything you need to start, run and grow your online business</h1>
+  <main class="main-content" id="main-content" role="main-content">
+  <div class="auto-layout-collapse">
+
+
+    <button id="reg" class="btn btn-primary my-2 my-sm-0" style=" width: 30%; height: auto; margin-left: 35%; margin-right: 35%;">register</button>
+
+
+
+
+
+
+        <div style="display: flex; align-items: center; justify-content: center;">
+        <img id="uid-4j8fYE0CQJXa7ncvN4rqfi-68288e33dec3e7466a8f99862ce93250f8bb461815af70da788595a7fbe953e2" class="display-inline-block" src="//images.ctfassets.net/2d5q1td6cyxq/4j8fYE0CQJXa7ncvN4rqfi/51ab3c595af2d9875b728a1978a9795d/cart.svg"></div>
+        </div>
+        <p style="margin: 40px 60px;">Easily sell online and ship orders to customers, offer curbside pickup, or local delivery—no matter what type of business you have. Plus, sell on Instagram, Facebook, and more.</p></div></div></div></div></div>
+                
+
+
+                <div style="display: flex; align-items: center; justify-content: center;">
+                      <img id="uid-4LxRVQDnhul6DbaqK7XeTu-3b0642b4e2929fa69ef78069a6d50cf45b11ae2ac613c6c983a3e8e66083e09b" class="display-inline-block" src="//images.ctfassets.net/2d5q1td6cyxq/4LxRVQDnhul6DbaqK7XeTu/36dd02a9ef507d87f2f117af5c89f59b/no-strings.svg">
+                    </div>
+                     <p style="margin: 40px 60px;">Be in business now for free. Only pay when you make a sale—2.9% + 30¢ per transaction. Or move to a paid plan for more advanced features.</p></div></div></div></div></div>
+                        
+                     
+                     <div style="display: flex; align-items: center; justify-content: center;">
+                          <img id="uid-5GYgGnmuTEMeCd4Xm40qKj-db2a82b3fb66777b3f6bfe564c2bba773a0bdd478b81b165d03b3d6e1f57cacf" class="display-inline-block" src="//images.ctfassets.net/2d5q1td6cyxq/5GYgGnmuTEMeCd4Xm40qKj/4a85840069cddf91e2adf56a80f6e614/launch.svg">
+                        </div>
+                        
+                          <p style="margin: 40px 60px;">You can create and publish your online store quickly. With the help of our site builder, you don’t need to know how to code. And your site will work well on any device.</p>
+                    
+
+
+
 
     <footer>
 
     </footer>
 
 
-hello world
+
 
 
 
