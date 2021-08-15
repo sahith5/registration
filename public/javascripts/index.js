@@ -76,6 +76,7 @@ var signedin=function(x) {
         $("#welcomecustomer").html("welcome"+"  "+userObject.getCurrentUserName());
 
         $("#welcomeowner").html("welcome"+"  "+userObject.getCurrentUserName());
+        $("#reg").hide();
 
 
 
@@ -83,6 +84,8 @@ var signedin=function(x) {
     }
     else
     {  
+        $("reg").show();
+
         $('#customer').hide();
         $('#owner').hide();
     $('#initial').show();
